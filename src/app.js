@@ -1,24 +1,11 @@
 import React from "react"
-import TextField from "src/components/text-field"
-import styled from "@emotion/styled"
-const Button = styled.button`
-  background: blue;
-`
-const Container = styled.div`
-  ${Button} {
-    background: orange;
-  }
-`
+import Providers from "src/providers"
+import Routes from "src/routes"
 function App() {
   return (
-    <div>
-      <p>i am the app</p>
-      <TextField />
-      <Button>outside</Button>
-      <Container>
-        <Button>Inside</Button>
-      </Container>
-    </div>
+    <Providers>
+      <Routes />
+    </Providers>
   )
 }
 
