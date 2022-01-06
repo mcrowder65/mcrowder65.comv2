@@ -2,8 +2,7 @@ import React from "react"
 import App from "src/app"
 import { screen } from "@testing-library/react"
 import { render } from "test/render"
-test("it renders", () => {
+test("it renders", async () => {
   render(<App />)
-
-  expect(screen.getByText(/i am the app/i)).toBeInTheDocument()
+  await screen.findByText(/root page/i)
 })
