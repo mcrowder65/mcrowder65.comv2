@@ -1,18 +1,12 @@
 import React from "react"
-import { useQuery } from "react-query"
-import { getMessage } from "src/pages/root/root.service"
+import styled from "@emotion/styled"
+const Container = styled.div``
 const Root = () => {
-  const { isLoading, data } = useQuery("message", getMessage)
-
-  if (isLoading) {
-    return "loading..."
-  }
-
-  if (data) {
-    return <div>{data.message}</div>
-  }
-
-  return null
+  return (
+    <Container>
+      <p>home</p>
+    </Container>
+  )
 }
 
 export default Root
