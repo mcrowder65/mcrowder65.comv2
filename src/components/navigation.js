@@ -6,6 +6,7 @@ import { css } from "@emotion/react"
 import { breakpoints } from "src/styles/breakpoints"
 import { Drawer, IconButton } from "@mui/material"
 import { MenuOutlined } from "@mui/icons-material"
+import useDidUpdate from "src/hooks/use-did-update"
 const linkCss = css`
   a {
     color: dodgerblue;
@@ -23,8 +24,10 @@ const Container = styled.div`
 
 const Navigation = (props) => {
   const location = useLocation()
-  console.log(location)
   const [open, setOpen] = React.useState(false)
+  useDidUpdate(location.pathname, () => {
+    setOpen(false)
+  })
   const links = (
     <React.Fragment>
       <Link to={routeNames.root}>Home</Link>
