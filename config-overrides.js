@@ -4,7 +4,6 @@ const {
   addBundleVisualizer,
   addBabelPreset,
 } = require("customize-cra")
-const { injectBabelPlugin } = require("react-app-rewired")
 
 let config = override(
   (config) => {
