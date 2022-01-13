@@ -35,6 +35,7 @@ const Navigation = (props) => {
       <Link to={routeNames.life}>Life</Link>
       <Link to={routeNames.fitness}>Fitness</Link>
       <Link to={routeNames.programming}>Programming</Link>
+      <Link to={routeNames.about}>About</Link>
     </React.Fragment>
   )
   return (
@@ -71,7 +72,7 @@ const Navigation = (props) => {
           button {
             display: none;
           }
-          ${breakpoints(618)} {
+          ${breakpoints(675)} {
             justify-content: space-between;
             button {
               display: flex;
@@ -86,7 +87,7 @@ const Navigation = (props) => {
         <div
           css={css`
             margin-left: 24px;
-            ${breakpoints(618)} {
+            ${breakpoints(675)} {
               display: none;
             }
             a {

@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 import Navigation from "src/components/navigation"
 
 const LazyRoot = React.lazy(() => import("src/pages/root/root"))
+const LazyAbout = React.lazy(() => import("src/pages/about/about"))
 const LazyFinance = React.lazy(() => import("src/pages/finance/finance"))
 const LazyLife = React.lazy(() => import("src/pages/life/life"))
 const LazyFitness = React.lazy(() => import("src/pages/fitness/fitness"))
@@ -17,6 +18,7 @@ export const routeNames = {
   fitness: "/fitness",
   programming: "/programming",
   life: "/life",
+  about: "/about",
 }
 const Container = styled.div`
   padding: 24px;
@@ -47,6 +49,7 @@ const Routes = () => {
           <Route path={routeNames.finance} component={LazyFinance} exact />
           <Route path={routeNames.fitness} component={LazyFitness} exact />
           <Route path={routeNames.life} component={LazyLife} exact />
+          <Route path={routeNames.about} component={LazyAbout} exact />
           <Route
             path={routeNames.programming}
             component={LazyProgramming}
