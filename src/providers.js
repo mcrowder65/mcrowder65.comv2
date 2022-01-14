@@ -12,7 +12,13 @@ export const sanityClient = _sanityClient({
   useCdn: true,
   apiVersion: "2021-08-31",
 })
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+})
 const muiTheme = createTheme()
 const Providers = (props) => {
   return (
