@@ -30,7 +30,6 @@ const Container = styled.div`
 
 const Navigation = (props) => {
   const location = useLocation()
-  console.log(location)
 
   const [open, setOpen] = React.useState(false)
   useDidUpdate(location.pathname, () => {

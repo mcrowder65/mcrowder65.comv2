@@ -3,7 +3,6 @@ import { useQuery } from "react-query"
 import PropTypes from "prop-types"
 import { getPosts } from "src/functions/get-posts"
 import PostPreview from "src/components/post-preview"
-import { routeNames } from "src/routes"
 
 const Posts = (props) => {
   const { data } = useQuery(props.queryKey, () =>
