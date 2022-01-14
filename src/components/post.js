@@ -14,24 +14,11 @@ function urlFor(source) {
 const Post = () => {
   const { slug } = useParams()
   const api = useQuery(slug, () =>
-    sanityClient.fetch(
-      `*[slug.current == $slug]{
-          title,
-          slug,
-          mainImage{
-            asset->{
-              _id,
-              url
-             }
-           },
-         body,
-        "name": author->name,
-        "authorImage": author->image
-       }`,
-      { slug },
-    ),
+  fetch(`/api/post?slug=${slug}`)
+    .then((result) => result.json())
+    .then((result) => result.post)
   )
-  const postData = api.data?.[0]
+  const postData = api.data
   if (!postData) {
     return null
   }
