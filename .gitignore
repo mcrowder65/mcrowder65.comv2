@@ -25,3 +25,4 @@ yarn-error.log*
 build-storybook.log
 
 .vercel
+mcrowder65comv2/node_modules
