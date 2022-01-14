@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import { routeNames } from "src/routes"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
@@ -7,61 +7,60 @@ import { breakpoints } from "src/styles/breakpoints"
 import { Drawer, IconButton } from "@mui/material"
 import { MenuOutlined } from "@mui/icons-material"
 import useDidUpdate from "src/hooks/use-did-update"
+
 const linkCss = css`
   a {
     color: dodgerblue;
     text-decoration: none;
   }
 `
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 800px;
+  padding: 0 24px;
   height: 100%;
+  .active {
+    color: purple;
+  }
   ${linkCss};
 `
 
 const Navigation = (props) => {
   const location = useLocation()
+  console.log(location)
+
   const [open, setOpen] = React.useState(false)
   useDidUpdate(location.pathname, () => {
     setOpen(false)
   })
   const links = (
     <React.Fragment>
-      <Link to={routeNames.root}>Home</Link>
-      <Link to={routeNames.finance}>Finance</Link>
-      <Link to={routeNames.life}>Life</Link>
-      <Link to={routeNames.fitness}>Fitness</Link>
-      <Link to={routeNames.programming}>Programming</Link>
-      <Link to={routeNames.about}>About</Link>
+      <NavLink exact activeClassName="active" to={routeNames.root}>
+        Home
+      </NavLink>
+      <NavLink activeClassName="active" to={routeNames.finance}>
+        Finance
+      </NavLink>
+      <NavLink activeClassName="active" to={routeNames.life}>
+        Life
+      </NavLink>
+      <NavLink activeClassName="active" to={routeNames.fitness}>
+        Fitness
+      </NavLink>
+      <NavLink activeClassName="active" to={routeNames.programming}>
+        Programming
+      </NavLink>
+      <NavLink activeClassName="active" to={routeNames.about}>
+        About
+      </NavLink>
     </React.Fragment>
   )
   return (
     <Container>
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-        <div
-          css={css`
-            width: 200px;
-            height: 100%;
-            padding: 24px 8px;
-            display: flex;
-            flex-direction: column;
-            ${linkCss};
-            a {
-              text-align: center;
-              display: flex;
-              align-items: center;
-              height: 48px;
-              //border: 1px solid lightgray;
-            }
-          `}
-        >
-          {links}
-        </div>
-      </Drawer>
-      <div
+      <header
         css={css`
           display: flex;
           align-items: center;
@@ -97,7 +96,7 @@ const Navigation = (props) => {
         >
           {links}
         </div>
-      </div>
+      </header>
       <div
         css={css`
           height: 100%;
@@ -105,6 +104,27 @@ const Navigation = (props) => {
       >
         {props.children}
       </div>
+      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+        <div
+          css={css`
+            width: 200px;
+            height: 100%;
+            padding: 24px 8px;
+            display: flex;
+            flex-direction: column;
+            ${linkCss};
+            a {
+              text-align: center;
+              display: flex;
+              align-items: center;
+              height: 48px;
+              //border: 1px solid lightgray;
+            }
+          `}
+        >
+          {links}
+        </div>
+      </Drawer>
     </Container>
   )
 }

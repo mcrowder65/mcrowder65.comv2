@@ -11,7 +11,12 @@ const LazyFitness = React.lazy(() => import("src/pages/fitness/fitness"))
 const LazyProgramming = React.lazy(() =>
   import("src/pages/programming/programming"),
 )
-
+const LazyFitnessPost = React.lazy(() =>
+  import("src/pages/fitness/fitness-post"),
+)
+const LazyFinancePost = React.lazy(() =>
+  import("src/pages/finance/finance-post"),
+)
 export const routeNames = {
   root: "/",
   finance: "/finance",
@@ -19,9 +24,10 @@ export const routeNames = {
   programming: "/programming",
   life: "/life",
   about: "/about",
+  fitnessPost: (slug = ":slug") => `/fitness/${slug}`,
+  financePost: (slug = ":slug") => `/finance/${slug}`,
 }
 const Container = styled.div`
-  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,6 +54,16 @@ const Routes = () => {
           <Route path={routeNames.root} component={LazyRoot} exact />
           <Route path={routeNames.finance} component={LazyFinance} exact />
           <Route path={routeNames.fitness} component={LazyFitness} exact />
+          <Route
+            path={routeNames.fitnessPost()}
+            component={LazyFitnessPost}
+            exact
+          />
+          <Route
+            path={routeNames.financePost()}
+            component={LazyFinancePost}
+            exact
+          />
           <Route path={routeNames.life} component={LazyLife} exact />
           <Route path={routeNames.about} component={LazyAbout} exact />
           <Route
